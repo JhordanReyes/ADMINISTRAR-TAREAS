@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { userContext } from '../../context/UserProvider';
 import RegisterAvatar from "../../assets/RegisterAvatar.png";
 import "./style.css";
@@ -6,24 +6,51 @@ import "./style.css";
 const Register = () => {
 
   const { user, setUser } = useContext(userContext);
+  const [ registerIsComplete, setRegisterIsComplete] = useState(false);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(user)
+  }
+
+  const handleDataUser = (event) => {
+    setUser( {
+      ...user,
+      [event.target.name]: event.target.value,
+    } )
+  }
+  useEffect(() => {
+    console.log(user)
+  }, [])
+  
 
   return (
     <div className='register'>
       <div className='register__container'>
         <img src={RegisterAvatar} alt="" />
-        <form className='register__container-form'>
+        <form
+          className='register__container-form'
+          onSubmit={ (event) => handleSubmit(event)}
+        >
           <h3>REGISTRAR DATOS</h3>
           <input
             type="text"
             placeholder='Ingresar nombre'
-            onChange={event => setUser(event.target.value)}
+            name='name'
+            onChange={event => handleDataUser(event)}
           />
-          <select name="" id="">
+          <select
+            name="gender"
+            onChange={ (event) => handleDataUser(event) }
+          >
             <option value="">-- GÉNERO --</option>
-            <option value="">HOMBRE</option>
-            <option value="">MUJER</option>
+            <option value="Hombre">Hombre</option>
+            <option value="Mujer">Mujer</option>
           </select>
-          <input type="submit" value="SIGUIENTE" />
+          <input
+            type="submit"
+            value="SIGUIENTE"
+          />
         </form>
       </div>
     </div>

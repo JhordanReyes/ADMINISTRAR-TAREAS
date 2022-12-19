@@ -7,3 +7,6 @@
   --primary-color: rgb(245, 206, 188);
   --color-white: rgb(249, 234, 227);
 }
+body{
+  font-family: 'Epilogue', sans-serif;
+}

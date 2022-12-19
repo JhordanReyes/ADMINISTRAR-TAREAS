@@ -56,8 +56,9 @@
 .register__container-form input[type=submit]{
     margin-top: 10px;
     width: 90%;
-    padding: 10px 40px;
-    background-color: rgb(253, 255, 126);
+    padding: 10px;
+    background-color: rgb(26, 17, 47);
+    color: white;
     border: none;
     box-shadow: 1px 1px 3px 1px rgba(78, 38, 1, 0.434);
     border-radius: 5px;
