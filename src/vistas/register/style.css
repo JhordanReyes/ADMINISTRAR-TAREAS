@@ -57,7 +57,7 @@
     margin-top: 10px;
     width: 90%;
     padding: 10px;
-    background-color: rgb(26, 17, 47);
+    background-color: var(--color-purple);
     color: white;
     border: none;
     box-shadow: 1px 1px 3px 1px rgba(78, 38, 1, 0.434);

@@ -1,0 +1,26 @@
+.app{
+    height: 100vh;
+    background-color: var(--color-white);
+    padding: 10px;
+    color: var(--color-purple);
+}
+.app__information{
+    padding: 40px 20px;
+}
+.app__information h1{
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.app__information p{
+    font-size: 15px;
+    font-weight: 500;
+}
+.app__information p span{
+    text-decoration: underline;
+}
+.app__data{
+    background-color: var(--primary-color);
+    width: 100%;
+    height: 130px;
+    border-radius: 20px;
+}

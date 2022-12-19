@@ -5,7 +5,8 @@
 }
 :root{
   --primary-color: rgb(245, 206, 188);
-  --color-white: rgb(249, 234, 227);
+  --color-white: rgb(248, 237, 232);
+  --color-purple: rgb(26, 17, 47);
 }
 body{
   font-family: 'Epilogue', sans-serif;

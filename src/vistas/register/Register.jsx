@@ -3,15 +3,18 @@ import { userContext } from '../../context/UserProvider';
 import RegisterAvatar from "../../assets/RegisterAvatar.png";
 import "./style.css";
 
-const Register = () => {
+const Register = ({setRegisterIsComplete}) => {
 
   const { user, setUser } = useContext(userContext);
-  const [ registerIsComplete, setRegisterIsComplete] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(user)
+    if(user.name === "" && user.gender === ""){
+
+    }
+    localStorage.setItem("userLS", JSON.stringify(user) );
   }
+
 
   const handleDataUser = (event) => {
     setUser( {
