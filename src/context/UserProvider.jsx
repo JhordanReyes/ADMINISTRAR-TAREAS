@@ -9,11 +9,10 @@ const INITIAL_STATE = {
 
 const UserProvider = ({children}) => {
 
-  if( !JSON.parse( localStorage.getItem("userLS") ) ){
-    localStorage.setItem("userLS", JSON.stringify(INITIAL_STATE));
-  }
+  if( !JSON.parse( localStorage.getItem("user") ) ){
+    localStorage.setItem("user", JSON.stringify(INITIAL_STATE));  }
 
-  const [user, setUser] = useState( JSON.parse(localStorage.getItem("userLS")) );
+  const [user, setUser] = useState( JSON.parse(localStorage.getItem("user")) );
 
   return (
     <userContext.Provider value={ {

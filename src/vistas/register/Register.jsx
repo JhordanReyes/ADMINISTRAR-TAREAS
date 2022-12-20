@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { userContext } from '../../context/UserProvider';
 import RegisterAvatar from "../../assets/RegisterAvatar.png";
 import "./style.css";
@@ -9,10 +9,13 @@ const Register = ({setRegisterIsComplete}) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if(user.name === "" && user.gender === ""){
-
+    if(!(user.name === "" || user.gender === "")){
+      localStorage.setItem("registerIsComplete", true)
+      setRegisterIsComplete(true)
+    }else{
+      console.log("faltan datos")
     }
-    localStorage.setItem("userLS", JSON.stringify(user) );
+    localStorage.setItem("user", JSON.stringify(user) );
   }
 
 
@@ -22,10 +25,6 @@ const Register = ({setRegisterIsComplete}) => {
       [event.target.name]: event.target.value,
     } )
   }
-  useEffect(() => {
-    console.log(user)
-  }, [])
-  
 
   return (
     <div className='register'>

@@ -5,8 +5,10 @@ import Register from './vistas/register/Register'
 
 const AdministrarTareas = () => {
 
-  const [ registerIsComplete, setRegisterIsComplete] = useState(false);
-
+  if(!localStorage.getItem("registerIsComplete")){
+    localStorage.setItem( "registerIsComplete", false );
+  }
+  const [ registerIsComplete, setRegisterIsComplete] = useState(JSON.parse(localStorage.getItem("registerIsComplete")));
   return (
     <UserProvider>
       {
