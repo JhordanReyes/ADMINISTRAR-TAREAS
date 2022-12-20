@@ -111,7 +111,8 @@ const App = () => {
             <div className='modalTask-input'>
               <label htmlFor="">Seleccionar una categoría</label>
               <select
-                name="category" id=""
+                name="category"
+                value={task.category}
                 onChange={(event) => handleDataTask(event)}
               >
                 <option value="">Categoría</option>
