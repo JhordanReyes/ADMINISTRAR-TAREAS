@@ -1,0 +1,28 @@
+.edition{
+    position: fixed;
+    top: 0;
+    left: 100%;
+    z-index: 50;
+    width: 100%;
+    height: 100vh;
+    padding: 40px 15px 20px;
+    background-color: var(--color-white);
+    transition: 0.3s;
+}
+.edition h3{
+    margin-bottom: 5px;
+}
+.edition form input,select,textarea{
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.15);
+    padding: 8px;
+    margin-bottom: 15px;
+    outline: none;
+}
+.cerrar-mobal__edition{
+    top: 5px !important;
+    right: 5px !important;
+    border-radius: 10px !important;
+}

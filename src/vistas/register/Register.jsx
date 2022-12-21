@@ -45,7 +45,7 @@ const Register = ({setRegisterIsComplete}) => {
             name="gender"
             onChange={ (event) => handleDataUser(event) }
           >
-            <option value="">-- GÉNERO --</option>
+            <option value="">-- Género --</option>
             <option value="Hombre">Hombre</option>
             <option value="Mujer">Mujer</option>
           </select>

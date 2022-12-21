@@ -1,7 +1,22 @@
 import React, { useContext, useEffect, useState } from 'react';
+import Edition from '../../components/edition/Edition';
 import Task from '../../components/task/Task';
 import { userContext } from '../../context/UserProvider';
 import "./style.css";
+
+const generateID = () => {
+  const date = new Date().getTime();
+  const number = Math.random();
+  return Math.round(date + number);
+}
+
+const INITIAL_STATE_TASK = {
+  "id": generateID(),
+  "title": "",
+  "description": "",
+  "category": "",
+  "complete": false,
+}
 
 const App = () => {
 
@@ -10,14 +25,13 @@ const App = () => {
   if (!localStorage.getItem("tasks")) {
     localStorage.setItem("tasks", JSON.stringify([]));
   }
+
   const [tasks, setTasks] = useState(JSON.parse(localStorage.getItem("tasks")));
-  const [task, setTask] = useState({
-    "title": "",
-    "description": "",
-    "category": "",
-    "complete": false,
-  });
+  const [task, setTask] = useState(INITIAL_STATE_TASK);
   const [modal, setModal] = useState(false);
+  const [counter, setCounter] = useState([]);
+  const [editar, setEditar] = useState(false)
+  const [taskEdit, setTaskEdit] = useState({})
 
   const handleAddTask = (event) => {
     event.preventDefault();
@@ -25,6 +39,7 @@ const App = () => {
     setTasks(JSON.parse(localStorage.getItem("tasks")))
     setModal(false)
     setTask({
+      "id": generateID(),
       "title": "",
       "description": "",
       "category": "",
@@ -55,15 +70,36 @@ const App = () => {
       : app.style.overflow = "auto";
   }, [modal])
 
+  useEffect(() => {
+    const newCounter = tasks.filter((tarea) => tarea.complete != true)
+    setCounter(newCounter);
+  }, [tasks])
+
+  useEffect(() => {
+    const edition = document.getElementById("edition");
+    editar
+      ? edition.style.left = "0%"
+      : edition.style.left = "100%";
+  }, [editar])
+
 
   return (
     <div className='app' id='app'>
+      <Edition
+        taskEdit={taskEdit}
+        editar={editar}
+        setEditar={setEditar}
+      />
       <div className='app__information'>
-        <h1>My tasks</h1>
-        <p>{tasks.length} tasks for <span>Today</span></p>
+        <h1>Mis tareas</h1>
+        {counter.length === 0
+          ? <p>No hay tareas</p>
+          : counter.length === 1
+            ? <p>{counter.length} tarea por <span>hacer</span></p>
+            : <p>{counter.length} tareas por <span>hacer</span></p>
+        }
       </div>
       <div className='app__data'>
-        <h2>{user.name}</h2>
       </div>
       <div className='container-tasks'>
         {
@@ -72,6 +108,11 @@ const App = () => {
               <Task
                 key={i}
                 task={task}
+                tasks={tasks}
+                setTasks={setTasks}
+                setTaskEdit={setTaskEdit}
+                editar={editar}
+                setEditar={setEditar}
               />
             ))
             : <p>Registre una tarea..</p>
@@ -116,7 +157,7 @@ const App = () => {
                 onChange={(event) => handleDataTask(event)}
               >
                 <option value="">Categoría</option>
-                <option value="Osio">Osio</option>
+                <option value="Cocina">Cocina</option>
                 <option value="Estudio">Estudio</option>
                 <option value="Comprar">Comprar</option>
                 <option value="Juegos">Juegos</option>
