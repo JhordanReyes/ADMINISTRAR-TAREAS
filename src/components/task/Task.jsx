@@ -32,7 +32,7 @@ return (
       }
     </div>
     <p
-      className='task-title'
+      className={`task-title ${task.complete ? "tachado" : ""}`}
       onClick={ ()=> handleEditar() }
     >{task.title} - {task.category}</p>
   </div>

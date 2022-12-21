@@ -1,0 +1,13 @@
+.noTask{
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    color: rgba(9, 23, 63, 0.5);
+    flex-direction: column;
+    font-weight: 600;
+}
+.noTask i{
+    font-size: 60px;
+}

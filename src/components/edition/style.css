@@ -8,6 +8,7 @@
     padding: 40px 15px 20px;
     background-color: var(--color-white);
     transition: 0.3s;
+    border-left: 1px solid black;
 }
 .edition h3{
     margin-bottom: 5px;
@@ -21,8 +22,52 @@
     margin-bottom: 15px;
     outline: none;
 }
+.opciones{
+    margin: 10px 0 20px;
+    padding: 10px 0;
+    border-bottom: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 23px;
+}
+.opciones-delete{
+    padding: 10px 20px;
+    background-color: var(--color-red);
+    box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 12px;
+    border: none;
+    transition: 0.3s;
+}
+.opciones-delete:hover{
+    background-color: rgb(238, 51, 51);
+}
+.opciones-all{
+    display: flex;
+    gap: 15px;
+}
+.opciones-all i{
+    border-radius: 5px;
+    padding: 3px;
+}
 .cerrar-mobal__edition{
     top: 5px !important;
     right: 5px !important;
     border-radius: 10px !important;
+}
+.task-condition{
+    display: flex;
+    align-items: center;
+    box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.15);
+    justify-content: space-between;
+    color: black;
+    border-radius: 5px;
+    padding: 10px 13px;
+    font-weight: 600;
+}
+.task-condition i{
+    font-size: 30px;
 }

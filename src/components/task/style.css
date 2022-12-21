@@ -11,6 +11,7 @@
 .task-title{
     font-weight: 500;
     width: 90%;
+    max-width: 90%;
     padding: 17px 0;
 }
 .complete{

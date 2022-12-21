@@ -38,6 +38,7 @@ const Register = ({setRegisterIsComplete}) => {
           <input
             type="text"
             placeholder='Ingresar nombre'
+            maxLength={14}
             name='name'
             onChange={event => handleDataUser(event)}
           />

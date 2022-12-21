@@ -4,10 +4,22 @@
   box-sizing: border-box;
 }
 :root{
-  --primary-color: rgb(245, 206, 188);
-  --color-white: rgb(243, 229, 222);
-  --color-purple: rgb(33, 22, 57);
+  --primary-color: rgb(190, 202, 233);
+  --color-white: rgb(224, 229, 240);
+  --color-purple: rgb(9, 23, 63);
+  --color-red: rgb(250, 112, 112);
+  --color-green: rgb(168, 245, 124);
+  --color-grafico: rgb(31, 53, 150);
 }
 body{
   font-family: 'Epilogue', sans-serif;
+}
+.bg-green{
+  background-color: var(--color-green);
+}
+.bg-red{
+  background-color: var(--color-red);
+}
+.tachado{
+  text-decoration: line-through;
 }

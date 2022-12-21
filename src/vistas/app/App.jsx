@@ -1,7 +1,8 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Edition from '../../components/edition/Edition';
+import Grafico from '../../components/grafico/Grafico';
+import NoTask from '../../components/noTask/NoTask';
 import Task from '../../components/task/Task';
-import { userContext } from '../../context/UserProvider';
 import "./style.css";
 
 const generateID = () => {
@@ -20,8 +21,6 @@ const INITIAL_STATE_TASK = {
 
 const App = () => {
 
-  const { user } = useContext(userContext);
-
   if (!localStorage.getItem("tasks")) {
     localStorage.setItem("tasks", JSON.stringify([]));
   }
@@ -30,14 +29,18 @@ const App = () => {
   const [task, setTask] = useState(INITIAL_STATE_TASK);
   const [modal, setModal] = useState(false);
   const [counter, setCounter] = useState([]);
-  const [editar, setEditar] = useState(false)
+  const [editarModal, setEditarModal] = useState(false)
   const [taskEdit, setTaskEdit] = useState({})
+
+  const handleModal = () => {
+    setModal(!modal)
+  }
 
   const handleAddTask = (event) => {
     event.preventDefault();
     localStorage.setItem("tasks", JSON.stringify([task, ...tasks]))
     setTasks(JSON.parse(localStorage.getItem("tasks")))
-    setModal(false)
+    handleModal()
     setTask({
       "id": generateID(),
       "title": "",
@@ -47,8 +50,9 @@ const App = () => {
     })
   }
 
-  const handleModal = () => {
-    setModal(true)
+  const handleCerrarModal = () => {
+    handleModal()
+    setTask(INITIAL_STATE_TASK)
   }
 
   const handleDataTask = (event) => {
@@ -77,18 +81,21 @@ const App = () => {
 
   useEffect(() => {
     const edition = document.getElementById("edition");
-    editar
+    editarModal
       ? edition.style.left = "0%"
       : edition.style.left = "100%";
-  }, [editar])
+  }, [editarModal])
 
 
   return (
     <div className='app' id='app'>
       <Edition
+        setTasks={setTasks}
+        tasks={tasks}
+        setTaskEdit={setTaskEdit}
         taskEdit={taskEdit}
-        editar={editar}
-        setEditar={setEditar}
+        editarModal={setEditarModal}
+        setEditarModal={setEditarModal}
       />
       <div className='app__information'>
         <h1>Mis tareas</h1>
@@ -99,8 +106,10 @@ const App = () => {
             : <p>{counter.length} tareas por <span>hacer</span></p>
         }
       </div>
-      <div className='app__data'>
-      </div>
+      <Grafico
+        tasks={tasks}
+        counter={counter}
+      />
       <div className='container-tasks'>
         {
           tasks.length
@@ -111,11 +120,11 @@ const App = () => {
                 tasks={tasks}
                 setTasks={setTasks}
                 setTaskEdit={setTaskEdit}
-                editar={editar}
-                setEditar={setEditar}
+                editar={editarModal}
+                setEditar={setEditarModal}
               />
             ))
-            : <p>Registre una tarea..</p>
+            : <NoTask />
         }
       </div>
       <button
@@ -126,15 +135,16 @@ const App = () => {
         <div className='modalTask__container'>
           <i
             className='bx bx-x cerrar-modal'
-            onClick={() => setModal(false)}
+            onClick={() => handleCerrarModal()}
           ></i>
+            <h3>REGISTRAR UNA TAREA</h3>
           <form action="" className='modalTask__container-form'>
             <div className='modalTask-input'>
               <label htmlFor="">Título</label>
               <input
                 type="text" name="title"
                 placeholder='Ingresar título'
-                maxLength={25}
+                maxLength={30}
                 value={task.title}
                 onChange={(event) => handleDataTask(event)}
               />
