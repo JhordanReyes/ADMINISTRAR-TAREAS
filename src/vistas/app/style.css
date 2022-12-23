@@ -1,6 +1,7 @@
 body {
     background-color: var(--color-white);
 }
+
 .app {
     max-width: 650px;
     height: 100vh;
@@ -12,7 +13,20 @@ body {
 }
 
 .app__information {
-    padding: 30px 20px;
+    padding: 30px 15px;
+    position: relative;
+}
+
+.app__information-btn {
+    background-color: var(--color-purple);
+    padding: 10px 15px;
+    color: var(--color-white);
+    position: absolute;
+    border: none;
+    border-radius: 5px;
+    top: 30px;
+    right: 15px;
+    font-weight: 600;
 }
 
 .app__information h1 {
@@ -157,21 +171,25 @@ select {
         font-size: 30px;
     }
 }
+
 @media (min-width: 800px) {
     .abrir-modal {
         right: 6rem;
     }
 }
+
 @media (min-width: 1000px) {
     .abrir-modal {
         right: 13rem;
     }
 }
+
 @media (min-width: 1200px) {
     .abrir-modal {
         right: 20rem;
     }
 }
+
 @media (min-width: 1400px) {
     .abrir-modal {
         right: 30rem;

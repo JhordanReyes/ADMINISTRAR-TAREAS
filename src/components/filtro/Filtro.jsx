@@ -26,8 +26,10 @@ const Filtro = ({tasks, filtro, setFiltro, setFiltroTasks}) => {
                 <option value="Cocina">Cocina</option>
                 <option value="Estudio">Estudio</option>
                 <option value="Comprar">Comprar</option>
-                <option value="Juegos">Juegos</option>
+                <option value="Entretenimiento">Entretenimiento</option>
                 <option value="Ejercicio">Ejercicio</option>
+                <option value="Salud">Salud</option>
+                <option value="Viaje">Viaje</option>
             </select>
         </div>
     )

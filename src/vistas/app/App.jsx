@@ -21,7 +21,7 @@ const INITIAL_STATE_TASK = {
   "complete": false,
 }
 
-const App = () => {
+const App = ({ setRegisterIsComplete }) => {
 
   if (!localStorage.getItem("tasks")) {
     localStorage.setItem("tasks", JSON.stringify([]));
@@ -70,6 +70,16 @@ const App = () => {
     )
   }
 
+  const handleResetApp = () => {
+    localStorage.setItem("tasks", JSON.stringify([]))
+    localStorage.setItem("registerIsComplete", false)
+    localStorage.setItem("user", JSON.stringify({
+      name: "",
+      gender: "",
+    }))
+    setRegisterIsComplete(false)
+  }
+
   useEffect(() => {
     const modalTask = document.getElementById("modalTask");
     const app = document.getElementById("app");
@@ -106,6 +116,9 @@ const App = () => {
       />
       <div className='app__information'>
         <h1>Mis tareas</h1>
+        <button
+        className='app__information-btn'
+          onClick={handleResetApp}>Reiniciar App</button>
         {counter.length === 0
           ? <p>No hay tareas</p>
           : counter.length === 1
@@ -117,7 +130,7 @@ const App = () => {
         tasks={tasks}
         counter={counter}
       />
-      <Filtro tasks={tasks} filtro={filtro} setFiltro={setFiltro} setFiltroTasks={setFiltroTasks}/>
+      <Filtro tasks={tasks} filtro={filtro} setFiltro={setFiltro} setFiltroTasks={setFiltroTasks} />
       <div className='container-tasks'>
         {
           filtroTasks.length
@@ -174,12 +187,14 @@ const App = () => {
                 value={task.category}
                 onChange={(event) => handleDataTask(event)}
               >
-                <option value="">Categoría</option>
+                <option value="">-- Categorías --</option>
                 <option value="Cocina">Cocina</option>
                 <option value="Estudio">Estudio</option>
                 <option value="Comprar">Comprar</option>
-                <option value="Juegos">Juegos</option>
+                <option value="Entretenimiento">Entretenimiento</option>
                 <option value="Ejercicio">Ejercicio</option>
+                <option value="Salud">Salud</option>
+                <option value="Viaje">Viaje</option>
               </select>
             </div>
             <input

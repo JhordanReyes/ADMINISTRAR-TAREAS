@@ -18,7 +18,7 @@ const AdministrarTareas = () => {
           ? <Register
               setRegisterIsComplete={setRegisterIsComplete}
             />
-          : <App />
+          : <App setRegisterIsComplete={setRegisterIsComplete}/>
       }
     </UserProvider>
   )

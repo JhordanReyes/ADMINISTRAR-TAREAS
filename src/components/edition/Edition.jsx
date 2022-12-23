@@ -89,12 +89,13 @@ const Edition = ({ setTasks, tasks, setTaskEdit, taskEdit, editarModal, setEdita
                         onChange={(event) => handleEditTask(event)}
                         disabled={`${editar ? "" : "disable"}`}
                     >
-                        <option value="">Categoría</option>
                         <option value="Cocina">Cocina</option>
                         <option value="Estudio">Estudio</option>
                         <option value="Comprar">Comprar</option>
-                        <option value="Juegos">Juegos</option>
+                        <option value="Entretenimiento">Entretenimiento</option>
                         <option value="Ejercicio">Ejercicio</option>
+                        <option value="Salud">Salud</option>
+                        <option value="Viaje">Viaje</option>
                     </select>
                     <h3>Descripción</h3>
                     <textarea
