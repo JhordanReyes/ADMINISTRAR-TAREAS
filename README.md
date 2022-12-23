@@ -1,2 +1,2 @@
 # ADMINISTRAR-TAREAS
-<img src="./src/assets/app.jpeg" />
+<img src="./src/assets/vista.jpeg" />
