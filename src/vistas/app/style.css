@@ -1,29 +1,40 @@
-.app{
+body {
+    background-color: var(--color-white);
+}
+.app {
+    max-width: 650px;
     height: 100vh;
     background-color: var(--color-white);
     padding: 10px;
     color: var(--color-purple);
     position: relative;
+    margin: auto;
 }
-.app__information{
+
+.app__information {
     padding: 30px 20px;
 }
-.app__information h1{
+
+.app__information h1 {
     font-weight: 600;
     margin-bottom: 10px;
 }
-.app__information p{
+
+.app__information p {
     font-size: 15px;
     font-weight: 500;
 }
-.app__information p span{
+
+.app__information p span {
     text-decoration: underline;
 }
-.container-tasks{
-    margin-top: 30px;
+
+.container-tasks {
+    margin-top: 20px;
     padding-bottom: 50px;
 }
-.abrir-modal{
+
+.abrir-modal {
     position: fixed;
     width: 42px;
     height: 42px;
@@ -37,7 +48,8 @@
     box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.3);
     border-radius: 15px;
 }
-.cerrar-modal{
+
+.cerrar-modal {
     position: absolute;
     top: -10px;
     right: -10px;
@@ -48,7 +60,8 @@
     border-radius: 15px;
     cursor: pointer;
 }
-.modalTask{
+
+.modalTask {
     display: none;
     position: fixed;
     top: 0;
@@ -60,7 +73,8 @@
     z-index: 50;
     overflow: hidden;
 }
-.modalTask__container{
+
+.modalTask__container {
     position: relative;
     width: 100%;
     max-width: 500px;
@@ -72,20 +86,30 @@
     border-radius: 10px;
     box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.2);
 }
-.modalTask__container-form{
+
+.modalTask__container-title {
+    padding: 5px 10px;
+}
+
+.modalTask__container-form {
     margin-top: 10px;
 }
-.modalTask-input{
+
+.modalTask-input {
     display: flex;
     flex-direction: column;
 }
-.modalTask-input label{
+
+.modalTask-input label {
     color: var(--color-purple);
     margin-bottom: 5px;
     margin-left: 10px;
     font-weight: 500;
 }
-.modalTask-input input, textarea, select{
+
+.modalTask-input input,
+textarea,
+select {
     border: none;
     border-radius: 5px;
     box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.15);
@@ -93,14 +117,16 @@
     margin-bottom: 15px;
     outline: none;
 }
-.modalTask-input textarea{
+
+.modalTask-input textarea {
     width: 100%;
     max-height: 250px;
     min-height: 100px;
     max-width: 100%;
     min-width: 100%;
 }
-.modalTask__container-form input[type=submit]{
+
+.modalTask__container-form input[type=submit] {
     width: 100%;
     padding: 12px;
     background-color: var(--color-purple);
@@ -111,11 +137,43 @@
     border: none;
     border-radius: 5px;
 }
-.modalTask-input select option{
+
+.modalTask-input select option {
     background-color: white;
     padding: 10px;
 }
-.modalTask-input select .option:hover{
+
+.modalTask-input select .option:hover {
     background-color: black;
     color: white;
+}
+
+@media (min-width: 700px) {
+    .abrir-modal {
+        width: 45px;
+        height: 45px;
+        bottom: 20px;
+        right: 3rem;
+        font-size: 30px;
+    }
+}
+@media (min-width: 800px) {
+    .abrir-modal {
+        right: 6rem;
+    }
+}
+@media (min-width: 1000px) {
+    .abrir-modal {
+        right: 13rem;
+    }
+}
+@media (min-width: 1200px) {
+    .abrir-modal {
+        right: 20rem;
+    }
+}
+@media (min-width: 1400px) {
+    .abrir-modal {
+        right: 30rem;
+    }
 }

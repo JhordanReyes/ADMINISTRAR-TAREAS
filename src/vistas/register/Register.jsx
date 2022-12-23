@@ -1,7 +1,8 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { userContext } from '../../context/UserProvider';
 import RegisterAvatar from "../../assets/RegisterAvatar.png";
 import "./style.css";
+import { alertCompleteForm } from '../../components/Alert';
 
 const Register = ({setRegisterIsComplete}) => {
 
@@ -13,11 +14,10 @@ const Register = ({setRegisterIsComplete}) => {
       localStorage.setItem("registerIsComplete", true)
       setRegisterIsComplete(true)
     }else{
-      console.log("faltan datos")
+      alertCompleteForm()
     }
     localStorage.setItem("user", JSON.stringify(user) );
   }
-
 
   const handleDataUser = (event) => {
     setUser( {
@@ -25,6 +25,18 @@ const Register = ({setRegisterIsComplete}) => {
       [event.target.name]: event.target.value,
     } )
   }
+
+  useEffect(() => {
+    localStorage.setItem("user", JSON.stringify({
+      name: "",
+      gender: "",
+    }))
+    setUser({
+      name: "",
+      gender: "",
+    })
+  }, [])
+  
 
   return (
     <div className='register'>

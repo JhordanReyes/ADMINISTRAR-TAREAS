@@ -8,6 +8,8 @@ const AdministrarTareas = () => {
   if(!localStorage.getItem("registerIsComplete")){
     localStorage.setItem( "registerIsComplete", false );
   }
+  
+
   const [ registerIsComplete, setRegisterIsComplete] = useState(JSON.parse(localStorage.getItem("registerIsComplete")));
   return (
     <UserProvider>

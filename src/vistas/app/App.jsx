@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { alertCompleteForm } from '../../components/Alert';
 import Edition from '../../components/edition/Edition';
+import Filtro from '../../components/filtro/Filtro';
 import Grafico from '../../components/grafico/Grafico';
 import NoTask from '../../components/noTask/NoTask';
 import Task from '../../components/task/Task';
@@ -31,13 +33,18 @@ const App = () => {
   const [counter, setCounter] = useState([]);
   const [editarModal, setEditarModal] = useState(false)
   const [taskEdit, setTaskEdit] = useState({})
-
+  const [filtro, setFiltro] = useState("")
+  const [filtroTasks, setFiltroTasks] = useState([])
   const handleModal = () => {
     setModal(!modal)
   }
 
   const handleAddTask = (event) => {
     event.preventDefault();
+    if ((task.title === "" || task.category === "")) {
+      alertCompleteForm()
+      return
+    }
     localStorage.setItem("tasks", JSON.stringify([task, ...tasks]))
     setTasks(JSON.parse(localStorage.getItem("tasks")))
     handleModal()
@@ -110,10 +117,11 @@ const App = () => {
         tasks={tasks}
         counter={counter}
       />
+      <Filtro tasks={tasks} filtro={filtro} setFiltro={setFiltro} setFiltroTasks={setFiltroTasks}/>
       <div className='container-tasks'>
         {
-          tasks.length
-            ? tasks.map((task, i) => (
+          filtroTasks.length
+            ? filtroTasks.map((task, i) => (
               <Task
                 key={i}
                 task={task}
@@ -137,7 +145,7 @@ const App = () => {
             className='bx bx-x cerrar-modal'
             onClick={() => handleCerrarModal()}
           ></i>
-            <h3>REGISTRAR UNA TAREA</h3>
+          <h3 className='modalTask__container-title'>REGISTRAR UNA TAREA</h3>
           <form action="" className='modalTask__container-form'>
             <div className='modalTask-input'>
               <label htmlFor="">Título</label>

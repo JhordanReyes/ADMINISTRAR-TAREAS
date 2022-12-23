@@ -15,8 +15,8 @@ const Grafico = ({ tasks, counter }) => {
     return (
         <div className='grafico'>
             <div className='grafico__data'>
-                <p>Total de tareas: <span>{tasks.length}</span></p>
-                <p>Tareas realizadas: <span>{tasks.length - counter.length}</span></p>
+                <p>Total de tareas: {tasks.length}</p>
+                <p>Tareas realizadas: {tasks.length - counter.length}</p>
             </div>
             <div className='grafico__circular'>
                 <CircularProgressbar
