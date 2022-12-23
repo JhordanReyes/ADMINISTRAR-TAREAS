@@ -3,4 +3,4 @@
 
 technologies = React / JavasCript / css
 
-url = https://administrar-tareas.netlify.app/
+URL = https://administrar-tareas.netlify.app/
